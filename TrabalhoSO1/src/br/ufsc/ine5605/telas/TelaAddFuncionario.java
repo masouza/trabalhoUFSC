@@ -9,13 +9,16 @@ import br.ufsc.ine5605.Controladores.ControladorFuncionario;
 import br.ufsc.ine5605.Controladores.ControladorGeral;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -23,12 +26,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
+
 /**
  *
  * @author Wellington
  */
 public class TelaAddFuncionario extends JFrame {
 
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private ControladorFuncionario owner;
 
     private JLabel labelMat;
@@ -136,28 +141,36 @@ public class TelaAddFuncionario extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text = jFTelefone.getText();
-                String words[] = text.split(" #@_\\/.*");
-                String teste="";
+                String str = jFTelefone.getText();
+                str = str.replaceAll("[^0-9.,]+", "");
+                Date nascimento=null;
                 
-               
-
-                JOptionPane.showMessageDialog(jFData, text);
-
                 int matricula = Integer.parseInt(jFMatricula.getText());
                 String nome = jFNome.getText();
-                int telefone = Integer.parseInt(text);
+                long telefone = Long.parseLong(str);
                 float salario = Float.parseFloat(jFSalario.getText());
+                try {
+                  nascimento = sdf.parse(jFData.getText());
+                } catch (ParseException ex) {
 
-                String valida = labelMat.getText();
-                if (valida != "") {
-                    owner.addFuncionario(matricula, nome, telefone, salario);
-                    JOptionPane.showMessageDialog(jFData, labelMat.getText());
-                } else {
-                    JOptionPane.showMessageDialog(jFData, "Preencha todos os Campos");
                 }
-            }
-
+                String valida = labelMat.getText();
+                String valida2 = labelNome.getText();
+                String valida3 = labelTel.getText();
+                String valida4 = labelSal.getText();
+                
+               
+                if (valida != "" && valida2 != "" && valida3 != "" && valida4 != "") {
+                    owner.addFuncionario(matricula, nome, telefone, salario, nascimento);
+                    JOptionPane.showMessageDialog(null,"Adicionado com Sucesso");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Preencha todos os Campos");
+                }
+            
+                }
+            
+            
+            
         });
 
     }

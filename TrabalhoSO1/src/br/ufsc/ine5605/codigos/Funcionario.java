@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.codigos;
 
+import java.util.Date;
+
 /**
  *
  * @author renan
@@ -12,10 +14,11 @@ package br.ufsc.ine5605.codigos;
 public class Funcionario {
     private Integer matricula;
     private String nome;
-    private int telefone;
+    private long telefone;
     private double salario;
     private Cargo cargo;
-
+    private Date nascimento;
+    
     public Funcionario() {
     }
 
@@ -35,11 +38,11 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
@@ -57,6 +60,14 @@ public class Funcionario {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
+    }
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
     }
     
 

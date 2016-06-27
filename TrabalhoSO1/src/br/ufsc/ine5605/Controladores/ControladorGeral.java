@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.Controladores;
 
+import java.util.Date;
+
 /**
  *
  * @author renan
@@ -12,10 +14,20 @@ package br.ufsc.ine5605.Controladores;
 public class ControladorGeral {
     private ControladorAcesso controladorAcesso;
     private ControladorFuncionario controladorFuncionario;
-
+    private Date horaAtual;
+    
+    
     public ControladorGeral() {
     controladorAcesso= new ControladorAcesso();
     controladorFuncionario= new ControladorFuncionario(this);
+    }
+
+    public Date getHoraAtual() {
+        return horaAtual;
+    }
+
+    public void setHoraAtual(Date horaAtual) {
+        this.horaAtual = horaAtual;
     }
 
     

@@ -7,7 +7,9 @@ package br.ufsc.ine5605.Controladores;
 
 import br.ufsc.ine5605.codigos.Cargo;
 import br.ufsc.ine5605.codigos.Funcionario;
+import br.ufsc.ine5605.codigos.TipoCargo;
 import br.ufsc.ine5605.telas.TelaAddFuncionario;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -15,8 +17,9 @@ import java.util.HashMap;
  * @author renan
  */
 public class ControladorFuncionario {
-    private HashMap<Integer , Funcionario> funcionarios = new HashMap<>();
-    private HashMap<Integer , Cargo> cargos = new HashMap<>();
+
+    private HashMap<Integer, Funcionario> funcionarios = new HashMap<>();
+    private HashMap<Integer, Cargo> cargos = new HashMap<>();
     private TelaAddFuncionario telaAddFuncionario;
     private ControladorGeral owner;
 
@@ -56,35 +59,32 @@ public class ControladorFuncionario {
     public void setOwner(ControladorGeral owner) {
         this.owner = owner;
     }
-    
-    public void addFuncionario(Integer matricula,String nome , int telefone, float salario){
+
+    public void addFuncionario(Integer matricula, String nome, long telefone, float salario, Date nascimento) {
         Funcionario funcionario = new Funcionario();
         funcionario.setMatricula(matricula);
         funcionario.setNome(nome);
         funcionario.setTelefone(telefone);
         funcionario.setSalario(salario);
+        funcionario.setNascimento(nascimento);
         funcionarios.put(matricula, funcionario);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-public boolean verificaCargo(int codigo){
-    if(cargos.containsKey(codigo)){
-        return true;
+    public void addCargo(Integer codigo, String nome, TipoCargo tipoCargo){
+    Cargo cargo = new Cargo();
+        cargo.setCodigo(codigo);
+        cargo.setNome(nome);
+        cargo.setTipoCargo(tipoCargo);
+        cargos.put(codigo, cargo);
+    
     }
 
-return false;
-}
+    public boolean verificaCargo(int codigo) {
+        if (!cargos.containsKey(codigo)) {
+            return true;
+        }
 
+        return false;
+    }
 
 }
