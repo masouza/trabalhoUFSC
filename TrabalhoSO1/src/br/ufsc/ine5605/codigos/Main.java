@@ -8,6 +8,7 @@ package br.ufsc.ine5605.codigos;
 import br.ufsc.ine5605.Controladores.ControladorFuncionario;
 import br.ufsc.ine5605.Controladores.ControladorGeral;
 import br.ufsc.ine5605.telas.TelaAddFuncionario;
+import br.ufsc.ine5605.telas.TelaMenuPrincipal;
 
 /**
  *
@@ -21,8 +22,7 @@ public class Main {
     public static void main(String[] args) {
         ControladorGeral teste = new ControladorGeral();
         ControladorFuncionario testee = new ControladorFuncionario(teste);
-        TelaAddFuncionario tela = new TelaAddFuncionario(testee);
-        tela.inicia();
+        TelaMenuPrincipal telaMP  = new TelaMenuPrincipal(teste);
     }
 
 }

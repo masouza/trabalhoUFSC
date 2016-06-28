@@ -25,6 +25,10 @@ public class ControladorGeral {
     public Date getHoraAtual() {
         return horaAtual;
     }
+    
+    public ControladorFuncionario gerControladorFuncionario(){
+        return controladorFuncionario;
+    }
 
     public void setHoraAtual(Date horaAtual) {
         this.horaAtual = horaAtual;
