@@ -30,6 +30,10 @@ public class ControladorGeral {
         this.horaAtual = horaAtual;
     }
 
+    public void entrar(int matricula) {
+        
+    }
+
     
     
     

@@ -67,6 +67,7 @@ public class ControladorFuncionario {
         funcionario.setTelefone(telefone);
         funcionario.setSalario(salario);
         funcionario.setNascimento(nascimento);
+        //funcionario.setCargo(cargo);
         funcionarios.put(matricula, funcionario);
     }
 

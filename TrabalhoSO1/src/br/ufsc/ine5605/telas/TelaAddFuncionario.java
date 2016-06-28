@@ -154,6 +154,9 @@ public class TelaAddFuncionario extends JFrame {
                 } catch (ParseException ex) {
 
                 }
+                
+                
+                
                 String valida = labelMat.getText();
                 String valida2 = labelNome.getText();
                 String valida3 = labelTel.getText();
@@ -162,7 +165,11 @@ public class TelaAddFuncionario extends JFrame {
                
                 if (valida != "" && valida2 != "" && valida3 != "" && valida4 != "") {
                     owner.addFuncionario(matricula, nome, telefone, salario, nascimento);
+                    teste teste = new teste(owner);
+                    teste.updateData();
+                    teste.Inicia();
                     JOptionPane.showMessageDialog(null,"Adicionado com Sucesso");
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Preencha todos os Campos");
                 }
